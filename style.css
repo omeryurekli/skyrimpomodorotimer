@@ -1,0 +1,251 @@
+:root {
+    font-size: 62.5%; /* 1rem = 16px */
+
+    --color-primary: #4A5E5D; /* Muted blue-green for background */
+    --color-secondary: #D4C19C; /* Light beige for secondary elements */
+    --color-font: #E6E2D6; /* Off-white for text */
+    --color-highlight: #9AA7A6; /* Lighter blue-green for highlights */
+    --color-shadow: #3A4B4A; /* Darker shade for shadows */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    background-color: var(--color-primary);
+    font-size: 1.6rem;
+    font-family: 'MedievalSharp', sans-serif;
+}
+
+.medieval-font {
+    font-family: 'MedievalSharp', serif;
+}
+
+p,
+i,
+h1 {
+    color: var(--color-font);
+}
+
+i {
+    font-size: 3.2rem;
+}
+
+h1 {
+    font-size: 3.2rem;
+}
+
+/* ==== CONTENT ===== */
+section {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.container {
+    width: min(42.5rem, 100%);
+    margin-inline: auto;
+    padding-inline: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.painel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+    width: 20rem;
+    margin-block: 5rem;
+    padding: 1rem;
+    border-radius: 10rem;
+    -webkit-box-shadow: 0px 0px 5px 10px var(--color-shadow); 
+    box-shadow: 0px 0px 5px 10px var(--color-shadow);
+}
+
+.painel p {
+    opacity: .8;
+    transition: 1s ease-in;
+}
+
+.painel p.active{
+    opacity: 1;
+    color: var(--color-secondary);
+}
+
+.timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30rem;
+    height: 30rem;
+    border-radius: 50%;
+    -webkit-box-shadow: 0px 0px 5px 10px var(--color-shadow); 
+    box-shadow: 0px 0px 5px 10px var(--color-shadow);
+}
+
+.circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 26rem;
+    height: 26rem;
+    border-radius: 50%;
+    background-color: var(--color-secondary);
+    position: relative;
+}
+
+.circle::before {
+    content: '';
+    position: absolute;
+    width: 95%;
+    height: 95%;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+}
+
+.time {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.time p {
+    font-size: 5.7rem;
+}
+
+.time p:nth-of-type(2) {
+    position: relative;
+    top: -.5rem;
+    margin-inline: 1rem;
+}
+
+.controls {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* Adjust gap as needed */
+}
+
+.controls button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 2rem; /* Adjust size as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+#startPause i, #settings i, #reset i {
+    margin: 0; /* Remove margin if needed */
+}
+
+#start {
+    order: 1;
+}
+
+#reset {
+    order: 2;
+    display: none;
+}
+
+#settings {
+    order: 3;
+}
+
+.spotify-embed {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 5px 10px var(--color-shadow);
+    width: 300px; /* Adjust width if needed */
+}
+
+.spotify-embed iframe {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.spotify-embed iframe:focus {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #333333; /* Darker gray for modal background */
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #000000; /* Black for border */
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+}
+
+.close {
+    color: #f5f5f5; /* Light gray for close button */
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #ffffff; /* White for hover and focus states */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h2,
+.modal-content label,
+.modal-content button {
+    color: #f5f5f5; /* Light gray for text */
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #444444; /* Even darker gray for input background */
+    color: #ffffff; /* White for input text */
+}
+
+/* Save button styles */
+.modal-content button {
+    background-color: #444444; /* Gray background for button */
+    color: #ffffff; /* White text for button */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'MedievalSharp', serif; /* Medieval font for button */
+}
+
+.modal-content button:hover {
+    background-color: #555555; /* Slightly lighter gray for hover state */
+}
